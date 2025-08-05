@@ -1,0 +1,16 @@
+
+version: "3.9"
+
+services:
+  dns-server:
+    build:
+        context: .
+        dockerfile: docker/Dockerfile
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+        - ./adservers.txt:/app/adservers.txt
+        - ./statistics.json:/app/statistics.json
+        - ./stats.txt:/app/stats.txt
+    tty: true
